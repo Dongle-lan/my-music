@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neon Admin Panel">
+    <meta name="author" content="">
+
+    <title>后台管理系统</title>
+
+
+    <link rel="stylesheet" href="static/css/jquery-ui-1.10.3.custom.min.css">
+    <link rel="stylesheet" href="static/css/entypo.css">
+    <link rel="stylesheet" href="static/css/css.css">
+    <link rel="stylesheet" href="static/css/bootstrap.css">
+    <link rel="stylesheet" href="static/css/neon-core.css">
+    <link rel="stylesheet" href="static/css/neon-theme.css">
+    <link rel="stylesheet" href="static/css/neon-forms.css">
+    <link rel="stylesheet" href="static/css/custom.css">
+
+    <script src="static/js/jquery-1.11.0.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <style>
+        .list-inline.links-list.pull-right li ol{
+            position: absolute;
+            display: none;
+            background: #303641;
+            border-radius: 3px 3px;
+            width: 100px;
+            list-style: none;
+            padding: 0px;
+        }
+        .list-inline.links-list.pull-right li ol li{
+            border-bottom: 1px solid #454a54;
+            border-color:#454a54;
+            background: #303641;
+            border-radius: 3px 3px;
+        }
+        .list-inline.links-list.pull-right li ol li:hover a{
+            color: white;
+        }
+        .list-inline.links-list.pull-right li ol li a{
+            color:#aaabae;
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 10px 0px 10px 0px;
+        }
+
+        .list-inline.links-list.pull-right li ol li a i{
+            margin-right: 0.2em
+        }
+
+
+        .list-inline.links-list.pull-right li:hover ol{
+            display: block;
+        }
+    </style>
+
+
+</head>
+<body class="page-body  page-fade" data-url="http://sc.chinaz.com">
+
+<div class="page-container">
+    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+
+    <div class="sidebar-menu" id="iframeleft">
+
+
+
+
+       \
+    </div>
+    <div class="main-content" id="indexapp">
+
+        <div class="row" style="position: relative; z-index: 1000">
+
+            <!-- Profile Info and Notifications -->
+            <div class="col-md-6 col-sm-8 clearfix">
+
+                <ul class="user-info pull-left pull-none-xsm">
+
+                    <!-- Profile Info -->
+                    <li class="profile-info dropdown">
+                        <!-- add class "pull-right" if you want to place this from right -->
+
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img :src="['../upload/'+sessionadmin.filename]" alt="" class="img-circle" width="44">
+                           {{sessionadmin.tname}}
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Raw Links -->
+            <div class="col-md-6 col-sm-4 clearfix hidden-xs">
+
+
+                <ul class="list-inline links-list pull-right">
+                    <!-- Language Selector -->
+                    <li>
+                        <a href="#" data-toggle="chat" data-animate="1" data-collapse-sidebar="1">
+                            <i class="entypo-chat"></i>
+                            系统设置
+                        </a>
+                        <ol>
+                            <li><a href="javascript:;" @click="changemenu('adminedit.html')"><i class="entypo-user"></i>个人信息</a></li>
+                            <li><a href="javascript:;" @click="changemenu('editupass.html')"><i class="entypo-lock"></i>修改密码</a></li>
+                        </ol>
+                    </li>
+                    <li class="sep"></li>
+
+                    <li>
+                        <a href="javascript:;" @click="logout()">
+                            注销 <i class="entypo-logout right"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+
+        <main>
+            <iframe id="iframe0" scrolling="yes" frameborder="0" style="width:100%;min-height:200px;overflow:visible;"
+                    src="main.html"></iframe>
+        </main>
+
+
+        <!-- Footer -->
+        <footer class="main">
+            <a>lan先生音乐后台管理系统</a>
+
+        </footer>
+    </div>
+
+
+    <div id="chat" class="fixed" data-current-user="Art Ramadani" data-order-by-status="1" data-max-chat-history="25">
+
+        <div class="chat-inner">
+
+
+            <h2 class="chat-header">
+                <a href="#" class="chat-close" data-animate="1"><i class="entypo-cancel"></i></a>
+
+                <i class="entypo-users"></i>
+                Chat
+                <span class="badge badge-success is-hidden">0</span>
+            </h2>
+
+
+        </div>
+
+        <!-- conversation template -->
+        <div class="chat-conversation">
+
+            <div class="conversation-header">
+                <a href="#" class="conversation-close"><i class="entypo-cancel"></i></a>
+
+                <span class="user-status"></span>
+                <span class="display-name"></span>
+                <small></small>
+            </div>
+
+            <ul class="conversation-body">
+            </ul>
+
+            <div class="chat-textarea">
+                <textarea class="form-control autogrow" placeholder="Type your message"></textarea>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<link rel="stylesheet" href="static/css/jquery-jvectormap-1.2.2.css">
+<link rel="stylesheet" href="static/css/rickshaw.min.css">
+
+<!-- Bottom Scripts -->
+<script src="static/js/main-gsap.js"></script>
+<script src="static/js/jquery-ui-1.10.3.minimal.min.js"></script>
+<script src="static/js/bootstrap.js"></script>
+<script src="static/js/joinable.js"></script>
+<script src="static/js/resizeable.js"></script>
+<script src="static/js/neon-api.js"></script>
+<script src="static/js/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="static/js/jquery-jvectormap-europe-merc-en.js"></script>
+<script src="static/js/jquery.sparkline.min.js"></script>
+<script src="static/js/d3.v3.js"></script>
+<script src="static/js/rickshaw.min.js"></script>
+<script src="static/js/raphael-min.js"></script>
+<script src="static/js/morris.min.js"></script>
+<script src="static/js/toastr.js"></script>
+<script src="static/js/neon-chat.js"></script>
+<script src="static/js/neon-custom.js"></script>
+<script src="static/js/neon-demo.js"></script>
+
+
+
+<script type="text/javascript" src="../axios/vue.js"></script>
+<script type="text/javascript" src="../axios/axios.min.js"></script>
+<script type="text/javascript" src="../axios/qs.js"></script>
+<script type="text/javascript" src="../layer/layer.js"></script>
+<script type="text/javascript" src="../axios/getUrlParams.js"></script>
+<script type="text/javascript">
+
+
+    var qs = Qs
+    var vueindex = new Vue({
+        el: "#indexapp",
+        data: {
+            sessionadmin: "",
+            url:"main.html"
+        },
+
+        mounted() {
+            this.getadmin()
+
+            //iframe自适应
+            $(window).on('resize', function () {
+                var $content = $('.content');
+                $content.height($(this).height());
+                $content.find('iframe').each(function () {
+                    $(this).height($content.height());
+                });
+            }).resize();
+            //main自适应
+            $(window).on('resize', function () {
+                var $content = $('main');
+                $content.height($(this).height());
+                $content.find('iframe').each(function () {
+                    $(this).height($content.height());
+                });
+            }).resize();
+        },
+
+        methods: {
+            getadmin() {
+                axios.post('checkadmin', qs.stringify({})).then(response => {
+                    if (response.data.data == 400) {
+                        location.replace("login.html")
+                    } else {
+                        this.sessionadmin = response.data.admin
+                    }
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            logout() {
+                axios.post('adminExit', qs.stringify({})).then(response => {
+                    location.replace("login.html")
+                }).catch(error => {
+                    console.log(error)
+                })
+            },
+
+            changemenu(data){
+                parent.$("#iframe0").attr("src",data)
+            }
+
+
+        }
+    })
+
+
+
+    window.onload = function () {
+        $("#iframeleft").load("left.html")
+    }
+</script>
+
+</body>
+</html>

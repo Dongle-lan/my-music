@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width",initial->
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_1803712_190aham4mrt.css">
+    <link rel="stylesheet" href="css/style1.css">
+
+
+  <title>登陆</title>
+
+</head>
+<body>
+
+<div class="form-wrapper">
+
+  <div class="header">
+   欢迎登陆音乐系统！
+  </div>
+  <div class="input-wrapper">
+    <div class="border-wrapper">
+<!--      <input type="text" name="username" placeholder="请输入用户名" class="border-item">-->
+      <input type="text" v-model="member.uname" placeholder="用户名" class="border-item">
+    </div>
+    <div class="border-wrapper">
+<!--      <input type="password" name="password" placeholder="请输入密码" class="border-item">-->
+      <input type="password" v-model="member.upass" placeholder="密码" class="border-item">
+    </div>
+  </div>
+
+  <div class="action">
+    <div class="btn" @click="add">登陆</div>
+  </div>
+
+  <div class="action">
+    <div class="btn" href="register.html">注册</div>
+  </div>
+
+  <div class="icon-wrapper">
+    <i class="iconfont icon-weixin"></i>
+    <i class="iconfont icon-weibo"></i>
+    <i class="iconfont icon-github"></i>
+  </div>
+</div>
+
+
+
+
+
+<!-- JS FILES -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/fancybox.min.js"></script>
+<script src="js/scripts.js"></script>
+<script type="text/javascript" src="axios/vue.js"></script>
+<script type="text/javascript" src="axios/getUrlParams.js"></script>
+<script type="text/javascript" src="layer/layer.js"></script>
+<script type="text/javascript" src="layui/layui.js"></script>
+<script type="text/javascript" src="axios/axios.min.js"></script>
+<script type="text/javascript" src="axios/qs.js"></script>
+
+<script type="text/javascript">
+
+  var qs = Qs
+  var vmm = new Vue({
+    el:"#app",
+    data:{
+      member:{
+        uname: "",
+        upass: "",
+      },
+    },
+    methods:{
+      add() {
+        if (this.member.uname == "") {
+          layer.msg("用户名不能为空", {icon: 5})
+          return false;
+        }
+        if (this.member.upass == "") {
+          layer.msg("密码不能为空", {icon: 5})
+          return false;
+        }
+
+
+        axios.post('Login', qs.stringify({
+          uname: this.member.uname,
+          upass: this.member.upass,
+        })).then(response => {
+          if (response.data.data == 200) {
+            location.replace("index.html")
+          } else{
+            layer.msg("用户名或密码错误", {icon: 5})
+            this.member.uname = ""
+            this.member.upass = ""
+          }
+        }).catch(error => {
+          console.log(error)
+        })
+      },
+
+    }
+  })
+  window.onload = function(){
+    $("#iframetop").load("top.html")
+    $("#iframefoot").load("foot.html")
+
+  }
+</script>
+
+
+
+</body>
+</html>

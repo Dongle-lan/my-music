@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="vuespringbootmusicsys:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>vuespringbootmusicsys</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="Lan.war">
+      <element id="artifact" artifact-name="vuespringbootmusicsys:war exploded" />
+    </root>
+  </artifact>
+</component>
