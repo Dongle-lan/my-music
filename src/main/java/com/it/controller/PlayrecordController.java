@@ -22,7 +22,7 @@ public class PlayrecordController {
     MovieDAO movieDAO;
 
 	
-	//后台播放记录列表
+	/**后台播放记录列表*/
     @ResponseBody
 	@RequestMapping("playrecordList")
 	public HashMap<String,Object> playrecordList(int movieid,HttpServletRequest request) {
@@ -38,7 +38,7 @@ public class PlayrecordController {
 	
 	
 	
-	//播放记录添加
+	/**播放记录添加*/
     @ResponseBody
 	@RequestMapping("playrecordAdd")
 	public HashMap<String,Object> playrecordAdd(Playrecord playrecord,HttpServletRequest request) {
@@ -64,7 +64,7 @@ public class PlayrecordController {
 	}
 	
 	
-	//播放记录删除
+	/**播放记录删除*/
     @ResponseBody
 	@RequestMapping("admin/playrecordDel")
 	public void playrecordDel(int id,HttpServletRequest request) {

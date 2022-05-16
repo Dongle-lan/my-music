@@ -238,6 +238,7 @@ button[type="submit"] i {
 
 /* CUSTOM BUTTON */
 .custom-button {
+  border-radius:30px;
   height: 66px;
   line-height: 64px;
   display: inline-block;
@@ -2828,11 +2829,12 @@ main {
 
 /* FOOTER */
 .footer {
+  background-image: url("../images/back.jpg");
   width: 100%;
   display: flex;
   flex-wrap: wrap;
   padding-top: 100px;
-  background: #111111;
+  /*background: #111111;*/
   color: #fff;
   position: relative;
   overflow: hidden;
@@ -2906,7 +2908,7 @@ main {
   display: flex;
   flex-wrap: wrap;
   padding: 40px 0;
-  background: #000;
+  background-image: url("../images/back.jpg");
   margin-top: 50px;
   font-size: 13px;
 }
@@ -2921,7 +2923,7 @@ main {
   margin-left: auto;
 }
 .footer .bottom-bar .container span:nth-child(2) a {
-  color: #fff;
+  color: #29d2da;
   text-decoration: underline;
 }
 .footer .bottom-bar .container span:nth-child(2) a:hover {

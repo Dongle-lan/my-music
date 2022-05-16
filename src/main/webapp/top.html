@@ -37,7 +37,7 @@
                 </form>
             </div>
             <!-- end mobile-search -->
-            <a v-if="sessionmember.tname==''" href="login3.html" class="button-account"><i class="lni lni-user"></i> 注册 </a>
+            <a v-if="sessionmember.tname==''" href="login.html" class="button-account"><i class="lni lni-user"></i> 注册 </a>
             <a v-if="sessionmember.tname==''" href="register.html" class="button-account" style="margin-left: 10px;"><i class="lni lni-user"></i> 登录 </a>
 
 
@@ -75,28 +75,10 @@
         <!-- end site-menu -->
         <div class="user-menu" style="height:100px">
             <div class="navbar-search"><i class="lni lni-search-alt"></i></div>
-            <!-- end navbar-search -->
-            <!--<div class="navbar-notify"><i class="lni lni-alarm"></i><b>2</b>-->
-                <!--<div class="notify-dropdown">-->
-                    <!--<div class="total-notify">-->
-                        <!--<h6>Notification</h6>-->
-                        <!--<span>3</span></div>-->
-                    <!--&lt;!&ndash; end total-notify &ndash;&gt;-->
-                    <!--<ul>-->
-                        <!--<li>-->
-                            <!--<p><u>Marcus</u> download 2000+ Simple Line Icons and Explore</p>-->
-                            <!--<span>2 Days</span></li>-->
-                        <!--<li>-->
-                            <!--<p>Added new movie <u>Afterlife</u> Cheatsheet to Start Using With Your Projects.</p>-->
-                            <!--<span>3 Days</span></li>-->
-                    <!--</ul>-->
-                <!--</div>-->
-                <!--&lt;!&ndash; end notify-dropdown &ndash;&gt;-->
-            <!--</div>-->
-            <!-- end navbar-notify -->
+
             <div class="navbar-account" style="height: 100px;">
                 <!--<a href="account.html">注册 <i class="lni lni-user"></i> </a>-->
-                <a v-if="sessionmember.tname==''" href="login3.html">登录 </a>
+                <a v-if="sessionmember.tname==''" href="login.html">登录 </a>
                 <a v-if="sessionmember.tname==''" href="register.html" style="margin-left: 10px;">注册 </a>
                 <a v-if="sessionmember.tname==''" href="forget.html" style="margin-left: 10px;">找回密码 </a>
                 <a v-if="sessionmember.tname!=''" href="#" style="margin-left: 10px;"> {{sessionmember.tname}}  你好！ </a>
@@ -152,11 +134,7 @@
                 <button type="submit" class="btn btn-primary" style="background-color: #00b7ee;">搜索</button>
                 <!--<input type="submit" value="搜索">-->
             </form>
-            <!--<ul>-->
-                <!--<li><a href="#">Pulp Function</a></li>-->
-                <!--<li><a href="#">Henry Porter</a></li>-->
-                <!--<li><a href="#">The Racer</a></li>-->
-            <!--</ul>-->
+
         </div>
         <!-- end container -->
     </section>

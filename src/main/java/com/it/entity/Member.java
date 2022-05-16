@@ -3,6 +3,8 @@ package com.it.entity;
 
 public class Member {
 
+    public String captcha;
+
     private int id;
     private String uname;
     private String upass;
@@ -13,6 +15,9 @@ public class Member {
     private String qq;
     private String email;
     private String isgly;
+
+
+
 
     public String getIsgly() {
         return isgly;
@@ -99,5 +104,7 @@ public class Member {
     }
 
 
-
+    public String captcha() {
+        return captcha;
+    }
 }

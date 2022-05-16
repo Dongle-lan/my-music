@@ -1,12 +1,19 @@
 package com.it.controller;
 
 import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.awt.image.BufferedImage;
+import java.io.OutputStream;
 import java.util.*;
 import com.it.dao.MemberDAO;
 import com.it.entity.Member;
+import com.it.util.VerifyUtil;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -46,13 +53,34 @@ public class MemberController {
     /**    登录*/
     @ResponseBody
     @RequestMapping("Login")
-    public HashMap<String, Object> Login(Member member, HttpServletRequest request) {
+    public HashMap<String, Object> Login(Member member, HttpServletRequest request, String captcha, HttpSession session) {
         HashMap<String, Object> res = new HashMap<String, Object>();
         HashMap<String, String> map = new HashMap<String, String>();
+
+
+
+
         map.put("uname", member.getUname());
         map.put("upass", member.getUpass());
+        map.put(captcha, member.captcha());
         List<Member> list = memberDAO.selectAll(map);
+
+        //得到验证码
+        String imageCode = (String) session.getAttribute("imageCode");
+        if (imageCode.equals(member.captcha())) {
+            if (list.size() > 0) {
+                Member member1 = list.get(0);
+                request.getSession().setAttribute("sessionmember", member1);
+                res.put("data", 200);
+            } else {
+                res.put("data", 400);
+            }
+        }
+
         if (list.size() == 0) {
+            if (imageCode.equals(member.captcha())) {
+                res.put("data", 400);
+            }
             res.put("data", 400);
         } else {
             Member mmm = list.get(0);
@@ -61,8 +89,27 @@ public class MemberController {
             res.put("sessionmember", mmm);
             res.put("data", 200);
         }
+
         return res;
     }
+
+    @ApiOperation("生成验证码")
+    @GetMapping("/getCode")
+    public void getCode(HttpServletResponse response, HttpSession session) throws Exception{
+        //利用图片工具生成图片
+        //第一个参数是生成的验证码，第二个参数是生成的图片
+        Object[] objs = VerifyUtil.createImage();
+        //将验证码存入Session
+        session.setAttribute("imageCode",objs[0]);
+
+        //将图片输出给浏览器
+        BufferedImage image = (BufferedImage) objs[1];
+        response.setContentType("image/png");
+        OutputStream os = response.getOutputStream();
+        ImageIO.write(image, "png", os);
+    }
+
+
 
 /**    找回密码*/
     @ResponseBody

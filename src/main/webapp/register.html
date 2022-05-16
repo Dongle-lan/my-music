@@ -1,172 +1,132 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="theme-color" content="#e90101"/>
-    <title>基于springboot在线音乐系统的设计</title>
-    <meta name="author" content="Themezinho">
-    <meta name="description" content="For all kind of video streaming website">
-    <meta name="keywords"
-          content="digiflex, video, movie, show, tv, watch, online, streaming, stream, ads, trailer, imdb, dram, action, hollywood, cinema, rate">
-
-    <!-- SOCIAL MEDIA META -->
-    <meta property="og:description" content="digiflex | Online Movie Streaming">
-    <meta property="og:image" content="http://www.themezinho.net/digiflex/preview.png">
-    <meta property="og:site_name" content="digiflex">
-    <meta property="og:title" content="digiflex">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="http://www.themezinho.net/digiflex">
-
-    <!-- TWITTER META -->
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@digiflex">
-    <meta name="twitter:creator" content="@digiflex">
-    <meta name="twitter:title" content="digiflex">
-    <meta name="twitter:description" content="digiflex | Online Movie Streaming">
-    <meta name="twitter:image" content="http://www.themezinho.net/digiflex/preview.png">
-
-    <!-- FAVICON FILES -->
-
-    <link rel="stylesheet" href="layui/css/layui.css">
-
-    <link href="ico/apple-touch-icon-144-precomposed.png" rel="apple-touch-icon" sizes="144x144">
-    <link href="ico/apple-touch-icon-114-precomposed.png" rel="apple-touch-icon" sizes="114x114">
-    <link href="ico/apple-touch-icon-72-precomposed.png" rel="apple-touch-icon" sizes="72x72">
-    <link href="ico/apple-touch-icon-57-precomposed.png" rel="apple-touch-icon">
-    <link href="ico/favicon.png" rel="shortcut icon">
-
-    <!-- CSS FILES -->
-    <link rel="stylesheet" href="css/lineicons.css">
-    <link rel="stylesheet" href="css/fancybox.min.css">
-    <link rel="stylesheet" href="css/swiper.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <title>注册</title>
+    <link rel="stylesheet" href="css/register.css">
 
     <style>
+        .submitbtn1{
 
-        .submitbtn{
-            height: 70px;
-            display: inline-block;
-            font-size: 14px;
-            font-weight: 600;
-            color: #fff;
-            background: #32e2ac;
+            height: 50px;
+            font-size: 30px;
+            font-weight: 50;
+            color: #47c679;
             border: none;
-            padding: 0 50px;
-            width: 100%;
-            text-align: center;
-            line-height: 70px;
+            padding: 0 20px;
+            width: 50%;
+            line-height: 80px;
         }
+        .enterBut {
+            /*-10*/
+            margin-top: 50px;
+            /*margin-left: 100px;*/
+            float: left;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            background-image: linear-gradient(to right, #c979d4, #fa719d);
+            text-align: center;
+            padding-top: 10px;
+            box-sizing: border-box;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .layui-upload-file {
+            display: none;
+        }
+
+        .enterBut1 {
+            /*-10*/
+            margin-top: 50px;
+            margin-left: 100px;
+            float: left;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            background-image: linear-gradient(to right, #c979d4, #fa719d);
+            text-align: center;
+            padding-top: 10px;
+            box-sizing: border-box;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
     </style>
 
+
 </head>
+
+
 <body>
+<div id="app" >
+    <form>
+        <h1>欢迎注册音乐系统！</h1>
 
-<div id="iframetop">
+        <!--            <p>头像：<button type="button" class="layui-btn" id="typo" style="width: 150px;">上传图片</button></p>-->
 
-</div>
-<!-- end mobile-menu -->
-<!-- end navbar -->
-
-<header class="page-header">
-    <div class="container">
-        <h4 style="text-align: center">注册</h4>
-    </div>
-</header>
+        <!--            <p>用户名:<input id="userNname" name="userName" type="text" autofocus required><label id="name_trip"></label></p>-->
+        <!--            <p>用户密码:<input id="password" type="password" required><label id="password_trip"></label></p>-->
+        <!--            <p>确认密码:<input id="surePassword" type="password" required><label id="surePassword_trip"></label></p>-->
 
 
-
-<!-- end slider -->
-<main>
-
-    <section class="content-section" >
-        <div class="container" id="app"  data-background="images/music8.jpg">    <!-- data-background="images/section-pattern01.png" -->
-        <div class="row align-items-center">
-                <div class="col-lg-7">
-                    <div class="membership">
-                        <h6>欢迎注册音乐系统！</h6>
-                        <p>请填写你的个人信息</p>
-                        <form>
-                            <div class="form-group">
-                                <div class="layui-upload" style="margin-bottom: 30px;">
-                                    <div class="layui-upload-list">
-                                        <input type="hidden" v-model="filename" id="filename"/>
-                                        <img class="layui-upload-img" id="imgname" style="width: 92px;">
-                                        <p id="demoText"></p>
-                                    </div>
-                                    <button type="button" class="layui-btn" id="test1" style="width: 150px;">上传图片</button>
-
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <input type="text" v-model="member.uname" @blur="checkUname()" placeholder="用户名"><p style="color: red" v-text="unameMsg">用户名已存在</p>
-                            </div>
-                            <!-- end form-group -->
-                            <div class="form-group">
-                                <input type="password" v-model="member.upass" placeholder="密码"><p v-if="upass_error" style="color: red">密码长度为6~16个字符</p>
-                            </div>
-                            <!-- end form-group -->
-                            <div class="form-group">
-                                <input type="text" v-model="member.tname" placeholder="姓名">
-                            </div>
-
-
-                            <div class="form-group">
-                                <select v-model="member.sex" style="width: 100%">
-                                    <option value="男">男</option>
-                                    <option value="女">女</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" v-model="member.tel" placeholder="电话"><p v-if="tel_error" style="color: red"></p>
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" v-model="member.qq" placeholder="QQ"><p v-if="qq_error" style="color: red"></p>
-
-                            </div>
-
-                            <div class="form-group">
-                                <input type="text" v-model="member.email" placeholder="邮箱"><p v-if="email_error" style="color: red">邮箱格式为：XXX@qq.com</p>
-
-                            </div>
-
-                            <div class="form-group">
-                                <a class="submitbtn" @click="add" >提交</a>
-                            </div>
-
-                            <div class="or">
-                                <span>or</span>
-                                <p>已有帐号请点击下方链接登录</p>
-                                <a href="login3.html" style="width: 100%">
-                                    <small>登录</small>
-                                </a>
-                            </a>
-                            </div>
-                            <!-- end or -->
-                        </form>
-                    </div>
-                    <!-- end membership -->
+        <div class="form-group">
+            <div class="layui-upload" style="margin-bottom: 30px;" >
+                <div class="layui-upload-list">
+                    <input type="hidden" v-model="filename" id="filename"/>
+                    <img class="layui-upload-img" id="imgname" style="width: 92px;">
+                    <p id="demoText"></p>
                 </div>
-             <!--   &lt;!&ndash; end col-7 &ndash;&gt;
-                <div class="col-lg-5">
-                    <figure class="side-image">
-                        <img src="images/music4.png" alt="Image">
-                    </figure>
-                    &lt;!&ndash; end side-image &ndash;&gt;
-                </div>-->
-                <!-- end col-5 -->
+                <p>头像：<button type="button" class="layui-btn" id="test1" style="width: 150px;" data-background="#47c679">上传图片</button></p>
             </div>
-            <!-- end row -->
         </div>
-        <!-- end container -->
-    </section>
 
-</main>
+
+        <p>账  号: <input type="text" v-model="member.uname" @blur="checkUname()" placeholder="请输入账号"></p>
+        <p>密  码: <input type="password" v-model="member.upass" placeholder="请输入密码"></p>
+
+        <p>姓  名:<input type="text" v-model="member.tname" placeholder="姓名"></p>
+
+        <p>性 别:<select v-model="member.sex" >
+            <option value="男">男</option>
+            <option value="女">女</option>
+        </select>
+        </p>
+
+        <p>电 话:<input type="text" v-model="member.tel" placeholder="电话"></p>
+
+
+        <p>Q  Q:<input type="text" v-model="member.qq" placeholder="QQ"></p>
+
+
+        <p>邮 箱:<input type="text" v-model="member.email" placeholder="邮箱"></p>
+
+
+
+
+        <!--            <p style="text-align: center;">-->
+        <!--                <input type="button" class="button" onclick="submitT()" value="注册">-->
+        <!--                <input type="reset" class="button" onclick="myFunctionReset()" value="返回">-->
+        <!--            </p>-->
+        <div>
+<!--            <div class="form-group">-->
+<!--                <a class="submitbtn1" @click="add" data-background="#458080">提交</a>-->
+<!--            </div>-->
+            <div class="enterBut">
+                <div class="btn" @click="add">提交</div>
+            </div>
+            <div class="enterBut1">
+                <div class="btn" @click="neonLogin">转到登陆</div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="js/jquery.min.js"></script>
+<script src="js/register.js"></script>
+
 
 <!-- JS FILES -->
 <script src="js/jquery.min.js"></script>
@@ -192,7 +152,7 @@
             member:{
                 uname: "",
                 upass: "",
-                filename: "icon1.png",
+                 filename: "icon1.png",
                 tname: "",
                 sex: "男",
                 tel: "",
@@ -276,6 +236,15 @@
             //         })
             //     }
             // },
+
+
+            neonLogin:function () {
+                location.href="login.html";
+            },
+
+            filename:function () {
+                var filename = this.member.filename;
+            },
 
             //密码校验
             upass_error:function(){

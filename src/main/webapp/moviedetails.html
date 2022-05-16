@@ -93,7 +93,7 @@
 <div id="app">
 
     <main>
-        <header class="page-header single" data-background="images/movie-poster-bg.jpg">
+        <header class="page-header single" data-background="images/musiccc.jpeg">
             <div class="container">
                 <div class="row">
                     <div class="col-12">
@@ -402,9 +402,11 @@
                                 layer.open({
                                     title:"请输入支付信息",
                                     type:2,
-                                    area:['600px','300px'],
+                                     //area:['600px','300px'],
+                                    area:['1200px','600px'],
                                     maxmin:true,
-                                    content:"pay.html?movieid="+id+"&fee="+this.movie.fee
+                                    //content:"pay.html?movieid="+id+"&fee="+this.movie.fee
+                                     content:"http://localhost:8888/vuespringbootmusicsys/sxzfDemo"
                                 })
                             }else{
                                 layer.alert('你已购买过该歌曲，无需再次购买', function(index){

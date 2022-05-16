@@ -45,6 +45,7 @@ public class MovieController {
         movie.setIsfree("是");
         movieDAO.add(movie);
     }
+
     //用户上传歌曲列表
     @ResponseBody
     @RequestMapping("myUploadList")

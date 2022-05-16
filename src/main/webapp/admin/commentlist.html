@@ -61,7 +61,7 @@
         <a href="index.html"><i class="entypo-home"></i>首页</a>
     </li>
     <li>
-        <a href="javascript:;">评论管理</a>
+        <a href="javascript:">评论管理</a>
     </li>
     <li class="active">
 
@@ -124,7 +124,7 @@
 
             <td>
                 <a v-if="comment.hfcontent==null || comment.hfcontent==''" :href="['commentedit.html?id='+comment.id+'&pageNum='+pageNum+'&key='+key]"><i class="layui-icon layui-icon-edit"></i>  </a>
-                <a href="javascript:;" @click="del(comment.id)"><i class="layui-icon layui-icon-delete"></i>  </a>
+                <a href="javascript:" @click="del(comment.id)"><i class="layui-icon layui-icon-delete"></i>  </a>
 
             </td>
         </tr>

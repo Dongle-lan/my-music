@@ -34,6 +34,7 @@ public class ArticleController {
     ReplyDAO replyDAO;
 	@Resource
 	MovieDAO movieDAO;
+
     //后台文章列表
 	@ResponseBody
 	@RequestMapping("admin/articleList")
